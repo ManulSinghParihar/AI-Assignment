@@ -6,7 +6,7 @@ States: 1 <= state <= 8
 		At any given point of time, the board would contain atleast
 		1 queen and atmost 8 queens.
 
-Initial State: Initially, a sinle queen is placed on the board,
+Initial State: Initially, a single queen is placed on the board,
 		starting from the top-left corner of the board.
 
 Function: The queens must be placed on the board such that it is not
