@@ -18,18 +18,18 @@ def population(number, size):
 
 # Creates Cross-Over
 def crossover(parentA, parentB):
-
-    crossMark1 = rand(1, len(parentA)/2 - 1)
-    crossMark2 = rand(len(parentA)/2, len(parentA) - 1)
-    childA = parentA[:crossMark1] + parentB[crossMark1:crossMark1] + parentA[crossMark2:]
-    childB = parentB[:crossMark1] + parentA[crossMark1:crossMark1] + parentB[crossMark2:]
+    
+    crossMark1 = rand(1, len(parentA)//2 - 1)
+    crossMark2 = rand(len(parentA)//2, len(parentA) - 1)
+    childA = parentA[:crossMark1] + parentB[crossMark1:crossMark2] + parentA[crossMark2:]
+    childB = parentB[:crossMark1] + parentA[crossMark1:crossMark2] + parentB[crossMark2:]
     return childA, childB
 
 # Mutation at random Index
 def mutation(gene):
     mutationPoint = rand(0, len(gene) - 1)
     gene[mutationPoint] = rand(1, 3)
-    gene[mutationPoint/2] = rand(1, 1000) % 3
+    gene[mutationPoint//2] = rand(1, 1000) % 3
     gene[0] = rand(500, 750) % 3
     return gene
 
@@ -47,8 +47,8 @@ def fitness_function(encoding, w):
     v1 = variance(g1) if len(g1) > 1 else 0
     v2 = variance(g2) if len(g2) > 1 else 0
     v3 = variance(g3) if len(g3) > 1 else 0
-
-    return 1 / mean([v1, v2, v3])
+    v = mean([v1,v2,v3])
+    return 1 / v if v != 0 else 0
 
 
 def genAlgo(genes, weights):
